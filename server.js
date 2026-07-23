@@ -29,10 +29,14 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/blogs', require('./routes/blogs'));
 app.use('/api/courses', require('./routes/courses'));
 
-// Serve frontend if needed (optional)
-app.use(express.static(path.join(__dirname, 'frontend/dist')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
+
+// Routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/blogs', require('./routes/blogs'));
+app.use('/api/courses', require('./routes/courses'));
+
+app.get("/", (req, res) => {
+  res.send("Backend is running...");
 });
 
 const PORT = process.env.PORT || 5000;
